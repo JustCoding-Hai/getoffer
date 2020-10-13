@@ -45,7 +45,7 @@ public class No234_IsPalindrome {
      */
     public static boolean isPalindrome(ListNode head) {
         if (head==null||head.next==null){
-            return false;
+            return true;
         }
 
         //原始的链表
@@ -57,28 +57,19 @@ public class No234_IsPalindrome {
         //遍历指针
         ListNode current=head;
 
-        //遍历时保存当前链表的下一个结点
-        ListNode next=null;
+        ListNode temp;
 
+        //不影响原链表的情况获取反转链表
         while (current!=null){
-            ListNode temp=new ListNode(current.val);
+            temp=new ListNode(current.val);
 
             temp.next=reverse.next;
             reverse.next=temp;
             current=current.next;
 
-
-            //记录下一个结点
-//            next=current.next;
-//            current.next=reverse.next;
-//            reverse.next=current;
-//            //下一个结点
-//            current=next;
         }
         reverse=reverse.next;
-
-
-
+        //逐个看是否相同，有一个不同就不是回文链表
         while (reverse!=null&&raw!=null){
             if (reverse.val!=raw.val){
                 return false;
