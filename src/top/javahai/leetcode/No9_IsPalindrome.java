@@ -28,7 +28,7 @@ public class No9_IsPalindrome {
         char[] chars = s.toCharArray();
         int left=0;
         int right=chars.length-1;
-        if (chars[0]=='-'||chars[right]=='0'&&chars.length!=1){
+        if ((chars[0]=='-'||chars[right]=='0')&&chars.length!=1){
             return false;
         }
         while(left<right){
@@ -43,12 +43,31 @@ public class No9_IsPalindrome {
 
     /**
      * 不将数字转化为字符串
+     *
+     * 例如：1221
+     * 前置条件：负数或个位数为0的数一定不是回文数
+     *                                                   反转得到的数字
+     * 1221%10=1  获得最后的一个数=1，1221/10=122          1
+     * 122%10=2 获得最后一个数=2,122/10=12                 1*10+2=12
+     *
+     * 终止条件：反转得到的数字大于等于正在操作的数字，就完成了反转
      * @param x
      * @return
      */
     public static boolean isPalindrome02(int x) {
+        //如果x为负数或个位数为0的数一定不是回文数
+        if(x<0||(x>0&&x%10==0)){
+            return false;
+        }
+        int reverseNum=0;
+        //当x小于或等于reverseNum时，反转完成
+        while (x>reverseNum){
+            reverseNum=reverseNum*10+x%10;
+            x/=10;
+        }
 
-        return false;
+        //reverseNum%10==x考虑的是奇数的情况，reverseNum取多了一位，需要去掉再比较
+        return reverseNum==x||reverseNum%10==x;
     }
 
     /**
