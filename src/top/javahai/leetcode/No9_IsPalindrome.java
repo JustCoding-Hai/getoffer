@@ -16,7 +16,7 @@ package top.javahai.leetcode;
  */
 public class No9_IsPalindrome {
     public static void main(String[] args) {
-        System.out.println(isPalindrome(12143));
+        System.out.println(isPalindrome02(121));
     }
     /**
      * 双向指针
@@ -67,7 +67,7 @@ public class No9_IsPalindrome {
         }
 
         //reverseNum%10==x考虑的是奇数的情况，reverseNum取多了一位，需要去掉再比较
-        return reverseNum==x||reverseNum%10==x;
+        return reverseNum==x||reverseNum/10==x;
     }
 
     /**
