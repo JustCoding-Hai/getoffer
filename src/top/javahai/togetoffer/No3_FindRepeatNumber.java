@@ -1,8 +1,6 @@
 package top.javahai.togetoffer;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 题目：找出数组中重复的数字。
@@ -17,10 +15,10 @@ import java.util.Set;
  * @author Hai
  * @date 2020/8/26 - 23:23
  */
-public class No03_FindRepeatNumber {
+public class No3_FindRepeatNumber {
     public static void main(String[] args) {
         int[] nums={5,3,3,4,2,1};
-        System.out.println(new No03_FindRepeatNumber().findRepeatNumber03(nums));
+        System.out.println(new No3_FindRepeatNumber().findRepeatNumber03(nums));
     }
 
     public int findRepeatNumber(int[] nums) {

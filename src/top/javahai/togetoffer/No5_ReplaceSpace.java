@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
  * @author Hai
  * @date 2020/8/26 - 22:54
  */
-public class No05_ReplaceSpace {
+public class No5_ReplaceSpace {
     public static void main(String[] args) {
-        System.out.println(new No05_ReplaceSpace().replaceSpace02("      "));
+        System.out.println(new No5_ReplaceSpace().replaceSpace02("      "));
     }
     public String replaceSpace(String s) {
         Pattern pattern = Pattern.compile("\\s");
