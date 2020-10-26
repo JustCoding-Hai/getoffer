@@ -14,11 +14,13 @@ public class No2_AddTwoNumbers {
         ListNode ln2 = new ListNode(3);
         ListNode l2 = new ListNode(5);
         ListNode ln3 = new ListNode(6);
-        ListNode ln4 = new ListNode(4);
+        ListNode ln4 = new ListNode(6);
+        ListNode ln5 = new ListNode(6);
         l1.next=ln1;
         ln1.next=ln2;
         l2.next=ln3;
         ln3.next=ln4;
+        ln4.next=ln5;
         ListNode listNode = new No2_AddTwoNumbers().addTwoNumbers(l1, l2);
         ListNode current=listNode;
         while (current!=null){
@@ -41,7 +43,7 @@ public class No2_AddTwoNumbers {
     }
 
     /**
-     * 这里只考虑到了L1和L2两条链表长度不同的情况
+     * 这里只考虑到了L1和L2两条链表长度不同的情况，未考虑L1和L2相加大于10的情况，需要多一个节点
      * @param l1
      * @param l2
      * @param result
@@ -53,6 +55,7 @@ public class No2_AddTwoNumbers {
         if (tenMore) {
             add=1;
         }
+        //如果链表的节点为空，就补0
         int l1Val=l1==null?0:l1.val;
         int l2Val=l2==null?0:l2.val;
         if (l1Val+l2Val+add>=10){
@@ -62,17 +65,18 @@ public class No2_AddTwoNumbers {
             tenMore=false;
             result.val=l1Val+l2Val+add;
         }
-        if (l1==null&&l2==null){
+        //遍历到两条链表的最后一个节点的情况
+        if ((l1==null||l1.next==null)&&(l2==null||l2.next==null)){
+            result.next=new ListNode(0);
             if (tenMore){
                 result.next.val=1;
             }else {
                 result.next=null;
-                result=null;
             }
             return result;
         }
         result.next=new ListNode(0);
-        recursiveAddListNode(l1.next==null?null:l1.next,l2.next==null?null:l2.next,result.next,tenMore);
+        recursiveAddListNode(l1==null?null:l1.next,l2==null?null:l2.next,result.next,tenMore);
         return result;
     }
 
