@@ -43,7 +43,7 @@ public class No2_AddTwoNumbers {
     }
 
     /**
-     * 这里只考虑到了L1和L2两条链表长度不同的情况，未考虑L1和L2相加大于10的情况，需要多一个节点
+     * 使用递归进行求解
      * @param l1
      * @param l2
      * @param result
@@ -65,7 +65,7 @@ public class No2_AddTwoNumbers {
             tenMore=false;
             result.val=l1Val+l2Val+add;
         }
-        //遍历到两条链表的最后一个节点的情况
+        //递归终止条件：遍历到两条链表都是最后一个节点的情况。需要考虑两数相加大于10的情况，需要多加个节点
         if ((l1==null||l1.next==null)&&(l2==null||l2.next==null)){
             result.next=new ListNode(0);
             if (tenMore){
@@ -73,6 +73,7 @@ public class No2_AddTwoNumbers {
             }else {
                 result.next=null;
             }
+            //终止递归
             return result;
         }
         result.next=new ListNode(0);
