@@ -66,7 +66,9 @@ public class No2_AddTwoNumbers {
             result.val=l1Val+l2Val+add;
         }
         //递归终止条件：遍历到两条链表都是最后一个节点的情况。需要考虑两数相加大于10的情况，需要多加个节点
-        if ((l1==null||l1.next==null)&&(l2==null||l2.next==null)){
+        boolean isFull1=l1==null||l1.next==null;
+        boolean isFull2=l1==null||l1.next==null;
+        if (isFull1&&isFull2){
             result.next=new ListNode(0);
             if (tenMore){
                 result.next.val=1;
