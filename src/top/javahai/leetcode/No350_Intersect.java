@@ -1,9 +1,6 @@
 package top.javahai.leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Hai
@@ -47,6 +44,11 @@ public class No350_Intersect {
      * @return
      */
     public static int[] intersect(int[] nums1, int[] nums2) {
+        //优化算法，将数组长度较小的放在map中
+        if (nums1.length>nums2.length){
+            return intersect(nums2,nums1);
+        }
+
         //统计第一个数组的所有数的个数，并放入到map
         Map<Integer, Integer> map = new HashMap<>(16);
         for (int i : nums1) {
@@ -78,4 +80,43 @@ public class No350_Intersect {
         return resultArr;
 
     }
+
+
+    /**
+     *解法2-双指针法：
+     * 首先对两个数组进行排序，定义两个指针指向两个数组，如果两个指针指向的数字相等就同时移向下一个数；
+     * 如果指向的数字不同就小的指针向右移动。任意一个指针越界就完成了交集的查找。
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int[] intersect2(int[] nums1, int[] nums2) {
+        //排序两个数组
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        //结果数组
+        int[] result = new int[Math.min(nums1.length,nums2.length)];
+        //结果数组的指针
+        int index=0;
+        int index1=0;
+        int index2=0;
+        while (index1<nums1.length&&index2<nums2.length){
+            if (nums1[index1]==nums2[index2]){
+                result[index]=nums1[index1];
+                index++;
+                index1++;
+                index2++;
+            }else{
+                if (nums1[index1]<nums2[index2]){
+                    index1++;
+                }else {
+                    index2++;
+                }
+            }
+        }
+        //Arrays.copyOfRange方法的作用是复制指定数组的指定范围的数据生成新的数组
+        return Arrays.copyOfRange(result,0,index);
+
+    }
+
 }
