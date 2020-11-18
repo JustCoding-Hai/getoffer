@@ -30,7 +30,8 @@ public class No55_MaxDepth {
 
 
     /**
-     * 递归实现
+     * 递归实现。
+     * 二叉树的深度等于max（它的左子树的深度+它的右子树的深度）+1
      * @param root
      * @return
      */
@@ -41,6 +42,7 @@ public class No55_MaxDepth {
         int nLeft = maxDepth(root.left);
         int nRight = maxDepth(root.right);
         return Math.max(nLeft,nRight)+1;
+        //return root==null?Math.max(maxDepth(root.left),maxDepth(root.right))+1;
 
     }
 
@@ -83,4 +85,5 @@ public class No55_MaxDepth {
 
     }
 
+    //TODO 拓展：统计二叉树的结点个数
 }
