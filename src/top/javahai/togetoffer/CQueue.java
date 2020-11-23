@@ -58,6 +58,5 @@ public class CQueue {
         }else{
             return stack2.pop();
         }
-
     }
 }
