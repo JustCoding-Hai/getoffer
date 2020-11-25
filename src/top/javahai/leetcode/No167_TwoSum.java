@@ -86,7 +86,7 @@ public class No167_TwoSum {
     /**
      * 方案2：
      * 1.先找到刚好比target大的数的数组下标range
-     * 2.快慢指针fast和slow，快指针初始为range，慢指针初始为0
+     * 2.双指针fast和slow，快指针初始为range，慢指针初始为0
      * 3.如果fast+slow指向的数等于target就直接返回
      *                       小于slow++
      *                       大于fast--
