@@ -46,8 +46,9 @@ public class No57_FindContinuousSequence {
 
     /**
      * 暴力法   ——超出时间限制。。。。。。。。。。。。
-     *1.从1到target-1遍历所有的数
+     * 1.从1到target-1遍历所有的数
      * 2.每个数，从该数起始开始累加，如果等于target就放入到结果中，如果大于跳出本次循环
+     *
      * @param target
      * @return
      */
@@ -59,10 +60,9 @@ public class No57_FindContinuousSequence {
             int index=0;
             int[] arr = new int[target-i];
             for (int j = i; j < target; j++) {
-                sum+=j;
-                if (sum>target){
-                    sum=0;
-                    index=0;
+                sum += j;
+                if (sum > target) {
+                    sum = 0;
                     break;
                 }
                 arr[index++]=j;
